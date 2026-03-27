@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Kanban Task Manager</h1>
+        </div>
+
+        <div class="form-container">
+            <div class="input-group">
+                <input type="text" id="inputTarefa" placeholder="Digite sua nova tarefa..." maxlength="200">
+                <button class="btn-adicionar" onclick="adicionarTarefa()">➕ Adicionar Tarefa</button>
+            </div>
+        </div>
+
+        <div class="acoes">
+            <button class="btn-limpar" onclick="limparTodasTarefas()">🗑️ Limpar Todas as Tarefas</button>
+        </div>
+
+        <div class="kanban-board">
+            <!-- Coluna A Fazer -->
+            <div class="coluna coluna-a-fazer">
+                <h2>📝 A Fazer <span class="contador" id="contadorAFazer">0</span></h2>
+                <div class="lista-tarefas" id="listaAFazer" data-status="aFazer"></div>
+            </div>
+
+            <!-- Coluna Fazendo -->
+            <div class="coluna coluna-fazendo">
+                <h2>⚙️ Fazendo <span class="contador" id="contadorFazendo">0</span></h2>
+                <div class="lista-tarefas" id="listaFazendo" data-status="fazendo"></div>
+            </div>
+
+            <!-- Coluna Concluído -->
+            <div class="coluna coluna-concluido">
+                <h2>✅ Concluído <span class="contador" id="contadorConcluido">0</span></h2>
+                <div class="lista-tarefas" id="listaConcluido" data-status="concluido"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

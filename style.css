@@ -1,0 +1,238 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Sour Gummy", sans-serif;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Cabeçalho */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.7rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Formulário de adicionar tarefa */
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-adicionar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            font-weight: 600;
+        }
+
+        .btn-adicionar:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Estilo dos botões de ação */
+        .acoes {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-limpar {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-limpar:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        /* Layout Kanban */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .coluna {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .coluna h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+            font-size: 1.5rem;
+        }
+
+        .coluna-a-fazer h2 {
+            border-bottom-color: #ff6b6b;
+        }
+
+        .coluna-fazendo h2 {
+            border-bottom-color: #ffd93d;
+        }
+
+        .coluna-concluido h2 {
+            border-bottom-color: #6bcf7f;
+        }
+
+        .contador {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        /* Lista de tarefas */
+        .lista-tarefas {
+            min-height: 400px;
+            transition: background-color 0.2s ease;
+        }
+
+        .tarefa {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: move;
+            user-select: none;
+        }
+
+        .tarefa:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tarefa.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        .tarefa-texto {
+            flex: 1;
+            color: #333;
+            font-size: 16px;
+            word-break: break-word;
+        }
+
+        .btn-remover {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .btn-remover:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+        /* Estilos para drag and drop */
+        .lista-tarefas.drag-over {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .tarefa {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .btn-remover {
+                align-self: flex-end;
+            }
+        }
+
+        /* Mensagem quando não há tarefas */
+        .mensagem-vazia {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+            font-style: italic;
+        }
