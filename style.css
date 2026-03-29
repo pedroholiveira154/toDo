@@ -2,7 +2,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Sour Gummy", sans-serif;
         }
 
         body {
@@ -25,10 +24,10 @@
 
         h1 {
             color: white;
-            font-size: 2.7rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             font-weight: 300;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         /* Formulário de adicionar tarefa */
@@ -37,7 +36,7 @@
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .input-group {
@@ -59,7 +58,7 @@
         .input-group input:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
         }
 
         .btn-adicionar {
@@ -90,7 +89,7 @@
             border: none;
             padding: 12px 25px;
             border-radius: 15px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
@@ -104,7 +103,7 @@
         /* Layout Kanban */
         .kanban-board {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
@@ -113,7 +112,7 @@
             border-radius: 20px;
             padding: 20px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .coluna h2 {
@@ -137,7 +136,7 @@
         }
 
         .contador {
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0,0,0,0.1);
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 14px;
@@ -155,7 +154,7 @@
             border-radius: 15px;
             padding: 15px;
             margin-bottom: 12px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -166,7 +165,7 @@
 
         .tarefa:hover {
             transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .tarefa.dragging {
@@ -177,7 +176,7 @@
         .tarefa-texto {
             flex: 1;
             color: #333;
-            font-size: 16px;
+            font-size: 14px;
             word-break: break-word;
         }
 
@@ -200,32 +199,52 @@
 
         /* Estilos para drag and drop */
         .lista-tarefas.drag-over {
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(102,126,234,0.1);
             border-radius: 15px;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
+        /* Responsividade aprimorada */
+        @media (max-width: 968px) {
             .kanban-board {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
+            
+            /* A coluna Concluído ocupa a largura total quando quebra para baixo */
+            .coluna-concluido {
+                grid-column: span 2;
+            }
+        }
 
+        @media (max-width: 768px) {
             .input-group {
                 flex-direction: column;
             }
-
+            
             h1 {
                 font-size: 1.8rem;
             }
-
+            
             .tarefa {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
             }
-
+            
             .btn-remover {
                 align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .kanban-board {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            /* Em telas muito pequenas, todas as colunas ocupam a largura total */
+            .coluna-concluido {
+                grid-column: span 1;
             }
         }
 
